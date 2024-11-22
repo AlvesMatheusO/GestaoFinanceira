@@ -20,12 +20,13 @@ defmodule Pluto.Core.Revenue.Api do
   def get_by(where) do
     from(Revenue)
     |> where(^where)
-    |>  Repo.one()
+    |> Repo.one()
   end
 
   # create revenue
   def insert(params) do
-    struct(Revenue, params)
+    %Revenue{}
+    |> Revenue.changeset(params)
     |> Repo.insert()
   end
 
@@ -35,10 +36,7 @@ defmodule Pluto.Core.Revenue.Api do
       nil -> nil
       revenue -> Repo.delete(revenue)
     end
-
   end
 
   # edit revenue
-
-
 end
