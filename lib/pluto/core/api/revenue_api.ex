@@ -39,4 +39,11 @@ defmodule Pluto.Core.Revenue.Api do
   end
 
   # edit revenue
+  def update(model, params) do
+    model
+      |> Revenue.changeset(params)
+      |> Repo.update()
+  end
+
+
 end
