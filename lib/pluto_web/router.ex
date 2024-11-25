@@ -7,6 +7,7 @@ defmodule PlutoWeb.Router do
 
   scope "/api", PlutoWeb do
     pipe_through :api
+    get "/revenues", RevenuesController, :all
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
