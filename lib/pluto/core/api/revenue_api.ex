@@ -38,8 +38,8 @@ defmodule Pluto.Core.Revenue.Api do
   # delete revenue
   def delete(id) do
     case get(id) do
+      {:ok, revenue} -> Repo.delete(revenue)
       nil -> nil
-      revenue -> Repo.delete(revenue)
     end
   end
 
