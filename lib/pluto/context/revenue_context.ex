@@ -9,5 +9,9 @@ defmodule Pluto.RevenueContext do
   end
 
 
+  def get(params) do
+    id = params["id"]
+    Revenue.Api.get(id)
+  end
 
 end

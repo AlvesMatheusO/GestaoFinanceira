@@ -3,7 +3,7 @@ defmodule Pluto.Core.Revenue do
 
   use Ecto.Schema
 
-  @derive {Jason.Encoder, only: [:title, :description, :price, :inserted_at, :updated_at]}
+  @derive {Jason.Encoder, only: [:id, :title, :description, :price, :inserted_at, :updated_at]}
   schema "revenues" do
     field(:title, :string)
     field(:description, :string)

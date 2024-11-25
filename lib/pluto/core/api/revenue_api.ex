@@ -14,6 +14,11 @@ defmodule Pluto.Core.Revenue.Api do
   # get ID
   def get(id) do
     Repo.get(Revenue, id)
+
+    |> case do
+      nil -> {:error, :not_found}
+      revenue -> {:ok, revenue}
+    end
   end
 
   # get by

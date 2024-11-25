@@ -2,12 +2,17 @@ defmodule PlutoWeb.Router do
   use PlutoWeb, :router
 
   pipeline :api do
-    plug :accepts, ["json"]
+    plug(:accepts, ["json"])
   end
 
   scope "/api", PlutoWeb do
-    pipe_through :api
-    get "/revenues", RevenuesController, :all
+    pipe_through(:api)
+
+    scope "/revenues" do
+      get("/", RevenuesController, :all)
+      get("/:id", RevenuesController, :get)
+
+    end
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
@@ -20,10 +25,10 @@ defmodule PlutoWeb.Router do
     import Phoenix.LiveDashboard.Router
 
     scope "/dev" do
-      pipe_through [:fetch_session, :protect_from_forgery]
+      pipe_through([:fetch_session, :protect_from_forgery])
 
-      live_dashboard "/dashboard", metrics: PlutoWeb.Telemetry
-      forward "/mailbox", Plug.Swoosh.MailboxPreview
+      live_dashboard("/dashboard", metrics: PlutoWeb.Telemetry)
+      forward("/mailbox", Plug.Swoosh.MailboxPreview)
     end
   end
 end
