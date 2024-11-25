@@ -11,6 +11,9 @@ defmodule PlutoWeb.Router do
     scope "/revenues" do
       get("/", RevenuesController, :all)
       get("/:id", RevenuesController, :get)
+      post("/insert", RevenuesController, :insert)
+      put("/update/:id", RevenuesController, :update)
+      delete("/delete/:id", RevenuesController, :delete)
 
     end
   end
